@@ -1075,7 +1075,7 @@ section {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
 }
 
@@ -1208,7 +1208,7 @@ section {
 /* --- Skills Section --- */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
     margin-bottom: 4rem;
 }
@@ -1306,7 +1306,7 @@ section {
 
 .certs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1.5rem;
 }
 
@@ -1782,30 +1782,19 @@ section {
 
     .hero-visual {
         order: -1; /* visual on top for mobile */
+        overflow: visible;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 380px;
     }
 
     .visual-wrapper {
-        width: 260px;
-        height: 260px;
+        width: 320px;
+        height: 320px;
+        transform: scale(0.85);
+        transform-origin: center center;
     }
-
-    .cube-container {
-        width: 120px;
-        height: 120px;
-    }
-
-    .face {
-        width: 120px;
-        height: 120px;
-        font-size: 2.25rem;
-    }
-
-    .front  { transform: rotateY(  0deg) translateZ(60px); }
-    .back   { transform: rotateY(180deg) translateZ(60px); }
-    .right  { transform: rotateY( 90deg) translateZ(60px); }
-    .left   { transform: rotateY(-90deg) translateZ(60px); }
-    .top    { transform: rotateX( 90deg) translateZ(60px); }
-    .bottom { transform: rotateX(-90deg) translateZ(60px); }
 
     /* About Grid Mobile */
     .about-grid {
@@ -1858,6 +1847,10 @@ section {
 }
 
 @media (max-width: 480px) {
+    .visual-wrapper {
+        transform: scale(0.68);
+    }
+
     .hero-title {
         font-size: 2.5rem;
     }
