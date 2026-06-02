@@ -258,22 +258,45 @@ document.addEventListener("DOMContentLoaded", () => {
             btnIcon.className = "fa-solid fa-spinner fa-spin";
             submitBtn.style.pointerEvents = "none";
 
-            // Mock sending email
-            setTimeout(() => {
-                showToast(`Thanks, ${name}! Your message was sent successfully.`, "success");
-                contactForm.reset();
-                
-                // Restore submit button
+            // Live AJAX email transmission using FormSubmit
+            fetch("https://formsubmit.co/ajax/manoharareddyp97@gmail.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    _subject: `New Portfolio Message: ${subject}`,
+                    message: message
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success === "true" || data.success === true) {
+                    showToast(`Thanks, ${name}! Your message has been sent successfully.`, "success");
+                    contactForm.reset();
+                    
+                    // Clear inputs blur states
+                    const inputs = contactForm.querySelectorAll("input, textarea");
+                    inputs.forEach(input => {
+                        input.blur();
+                    });
+                } else {
+                    showToast("Failed to send message. Please try again.", "warning");
+                }
+            })
+            .catch(error => {
+                console.error("Error sending email:", error);
+                showToast("Connection error. Please try again later.", "warning");
+            })
+            .finally(() => {
+                // Restore button state
                 btnSpan.textContent = originalText;
                 btnIcon.className = originalIconClass;
                 submitBtn.style.pointerEvents = "auto";
-                
-                // Clear placeholder values for floating label classes
-                const inputs = contactForm.querySelectorAll("input, textarea");
-                inputs.forEach(input => {
-                    input.blur();
-                });
-            }, 1500);
+            });
         });
     }
 });
