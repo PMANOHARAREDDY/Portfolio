@@ -188,14 +188,11 @@
                 </div>
 
                 <div class="about-grid">
-                    <div class="about-text-content">
-                        <h3 class="about-h3">Who I Am</h3>
-                        <p class="about-p">
-                            I am an Information Science and Engineering student at <strong>The National Institute of Engineering, Mysuru</strong>. My academic journey has allowed me to delve deep into Core CS Fundamentals, data-driven backends, and full-stack solutions.
-                        </p>
-                        <p class="about-p">
-                            I love turning complex logic into elegant applications. Whether it's optimization of queries in MySQL, designing interactive Flutter experiences, or leveraging LLMs for AI workflows, I approach development with a structured, problem-solving mindset.
-                        </p>
+                    <div class="about-image-column">
+                        <div class="about-image-wrapper">
+                            <img src="profile.jpg" alt="P Manohara Reddy" class="profile-img">
+                            <div class="about-image-glow"></div>
+                        </div>
                         
                         <div class="quick-stats">
                             <div class="stat-card">
@@ -213,43 +210,53 @@
                         </div>
                     </div>
 
-                    <div class="education-timeline">
-                        <h3 class="about-h3">Education timeline</h3>
-                        <div class="edu-timeline-container">
-                            <!-- BE -->
-                            <div class="edu-item">
-                                <div class="edu-icon">
-                                    <i class="fa-solid fa-graduation-cap"></i>
+                    <div class="about-text-content">
+                        <h3 class="about-h3">Who I Am</h3>
+                        <p class="about-p">
+                            I am an Information Science and Engineering student at <strong>The National Institute of Engineering, Mysuru</strong>. My academic journey has allowed me to delve deep into Core CS Fundamentals, data-driven backends, and full-stack solutions.
+                        </p>
+                        <p class="about-p">
+                            I love turning complex logic into elegant applications. Whether it's optimization of queries in MySQL, designing interactive Flutter experiences, or leveraging LLMs for AI workflows, I approach development with a structured, problem-solving mindset.
+                        </p>
+                        
+                        <div class="education-timeline">
+                            <h3 class="about-h3">Education timeline</h3>
+                            <div class="edu-timeline-container">
+                                <!-- BE -->
+                                <div class="edu-item">
+                                    <div class="edu-icon">
+                                        <i class="fa-solid fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="edu-content">
+                                        <span class="edu-date">Graduating Aug 2027</span>
+                                        <h4 class="edu-title">BE Information Science and Engineering</h4>
+                                        <p class="edu-inst">The National Institute of Engineering, Mysuru</p>
+                                        <span class="edu-grade"><i class="fa-solid fa-chart-line"></i> CGPA: 8.54 / 10</span>
+                                    </div>
                                 </div>
-                                <div class="edu-content">
-                                    <span class="edu-date">Graduating Aug 2027</span>
-                                    <h4 class="edu-title">BE Information Science and Engineering</h4>
-                                    <p class="edu-inst">The National Institute of Engineering, Mysuru</p>
-                                    <span class="edu-grade"><i class="fa-solid fa-chart-line"></i> CGPA: 8.54 / 10</span>
+                                <!-- CBSE -->
+                                <div class="edu-item">
+                                    <div class="edu-icon">
+                                        <i class="fa-solid fa-school"></i>
+                                    </div>
+                                    <div class="edu-content">
+                                        <span class="edu-date">Completed May 2023</span>
+                                        <h4 class="edu-title">Higher Secondary Certificate (CBSE)</h4>
+                                        <p class="edu-inst">Rashtrotthana Vidya Kendra, Bangalore</p>
+                                        <span class="edu-grade"><i class="fa-solid fa-percentage"></i> Percentage: 86.2%</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- CBSE -->
-                            <div class="edu-item">
-                                <div class="edu-icon">
-                                    <i class="fa-solid fa-school"></i>
-                                </div>
-                                <div class="edu-content">
-                                    <span class="edu-date">Completed May 2023</span>
-                                    <h4 class="edu-title">Higher Secondary Certificate (CBSE)</h4>
-                                    <p class="edu-inst">Rashtrotthana Vidya Kendra, Bangalore</p>
-                                    <span class="edu-grade"><i class="fa-solid fa-percentage"></i> Percentage: 86.2%</span>
-                                </div>
-                            </div>
-                            <!-- KSEEB -->
-                            <div class="edu-item">
-                                <div class="edu-icon">
-                                    <i class="fa-solid fa-book"></i>
-                                </div>
-                                <div class="edu-content">
-                                    <span class="edu-date">Completed May 2021</span>
-                                    <h4 class="edu-title">Secondary School Leaving Certificate (KSEEB)</h4>
-                                    <p class="edu-inst">B C M Navodaya Model Residential High School, Ballari</p>
-                                    <span class="edu-grade"><i class="fa-solid fa-percentage"></i> Percentage: 97.92%</span>
+                                <!-- KSEEB -->
+                                <div class="edu-item">
+                                    <div class="edu-icon">
+                                        <i class="fa-solid fa-book"></i>
+                                    </div>
+                                    <div class="edu-content">
+                                        <span class="edu-date">Completed May 2021</span>
+                                        <h4 class="edu-title">Secondary School Leaving Certificate (KSEEB)</h4>
+                                        <p class="edu-inst">B C M Navodaya Model Residential High School, Ballari</p>
+                                        <span class="edu-grade"><i class="fa-solid fa-percentage"></i> Percentage: 97.92%</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -632,6 +639,10 @@
                             <div class="form-group">
                                 <input type="email" id="form-email" name="email" required placeholder=" ">
                                 <label for="form-email">Your Email</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="form-phone" name="phone" required placeholder=" ">
+                                <label for="form-phone">Your Phone Number</label>
                             </div>
                             <div class="form-group">
                                 <input type="text" id="form-subject" name="subject" required placeholder=" ">

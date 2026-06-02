@@ -237,11 +237,12 @@ document.addEventListener("DOMContentLoaded", () => {
             
             const name = document.getElementById("form-name").value.trim();
             const email = document.getElementById("form-email").value.trim();
+            const phone = document.getElementById("form-phone").value.trim();
             const subject = document.getElementById("form-subject").value.trim();
             const message = document.getElementById("form-message").value.trim();
             
             // Simple validation
-            if (!name || !email || !subject || !message) {
+            if (!name || !email || !phone || !subject || !message) {
                 showToast("Please fill in all fields", "warning");
                 return;
             }
@@ -258,8 +259,8 @@ document.addEventListener("DOMContentLoaded", () => {
             btnIcon.className = "fa-solid fa-spinner fa-spin";
             submitBtn.style.pointerEvents = "none";
 
-            // Live AJAX email transmission using FormSubmit
-            fetch("https://formsubmit.co/ajax/manoharareddyp97@gmail.com", {
+            // Trigger Email (FormSubmit) and Telegram Alert (Vercel API) concurrently
+            const emailPromise = fetch("https://formsubmit.co/ajax/manoharareddyp97@gmail.com", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -268,14 +269,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify({
                     name: name,
                     email: email,
+                    phone: phone,
                     _subject: `New Portfolio Message: ${subject}`,
                     message: message
                 })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success === "true" || data.success === true) {
-                    showToast(`Thanks, ${name}! Your message has been sent successfully.`, "success");
+            }).then(r => r.json());
+
+            const telegramPromise = fetch("/api/send-telegram", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    subject: subject,
+                    message: message
+                })
+            }).then(r => r.json()).catch(err => ({ success: false, error: err }));
+
+            Promise.all([emailPromise, telegramPromise])
+            .then(([emailResult, telegramResult]) => {
+                if (emailResult.success === "true" || emailResult.success === true) {
+                    let successMsg = `Thanks, ${name}! Your message has been sent successfully.`;
+                    if (telegramResult.success) {
+                        successMsg += " Telegram alert sent.";
+                    }
+                    showToast(successMsg, "success");
                     contactForm.reset();
                     
                     // Clear inputs blur states
@@ -288,7 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             })
             .catch(error => {
-                console.error("Error sending email:", error);
+                console.error("Transmission error:", error);
                 showToast("Connection error. Please try again later.", "warning");
             })
             .finally(() => {
